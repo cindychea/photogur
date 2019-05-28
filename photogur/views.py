@@ -26,7 +26,7 @@ def picture_show(request, id):
 
 def picture_search(request):
     query = request.GET['query']
-    search_results = Picture.objects.filter(artist=query)
+    search_results = (Picture.objects.filter(title__icontains=query)) | Picture.objects.filter(artist__icontains=query)
     context = {
         'pictures': search_results,
         'query': query,
