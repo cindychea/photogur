@@ -1,15 +1,25 @@
 * {
     box-sizing: border-box;
 }
-html {
-    position: relative;
+.search {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    padding: 5px;
+}
+body {
+    padding-bottom: 30px;
 }
 .photogur {
     color: grey;
     font-size: 2em;
     font-family: Arial, Helvetica, sans-serif;
-    padding: 0.5em 0;
+    padding: 10px;
     border-bottom: 1px solid lightgrey;
+
+}
+.photogur a {
+    color: grey;
+    text-decoration: none;
 }
 .photo_grid {
     display: flex;
@@ -29,6 +39,9 @@ html {
     padding: 5px;
     margin: 15px;
     max-width: 310px;
+}
+.main {
+    margin-left: 30px;
 }
 .main ul li img {
     width: 300px;

@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Search results: {{ pictures.count }}</h2>
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+    <h2>Search results: <span>{{ pictures.count }}</span></h2>
     <ul>
         {% for picture in pictures %}
         <li>
             <img src="{{ picture.url }}" alt="{{ picture.title }}">
-            <h4>{{ picture.title }} by {{ picture.artist }}</h4> 
+            <h4><span class="pic-title">{{ picture.title }}</span> by {{ picture.artist }}</h4> 
         </li>
     </ul>
     {% endfor %}

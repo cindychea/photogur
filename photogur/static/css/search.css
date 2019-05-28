@@ -1,0 +1,28 @@
+h2 {
+    color: grey;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1em;
+    padding: 10px;
+}
+h2 span {
+    border-bottom: 2px solid grey;
+}
+li img {
+    display: inline-block;
+}
+li h4 {
+    display: inline-block;
+    padding: 10px;
+    color: grey;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.pic-title {
+    font-style: italic;
+}
+.back {
+    display: block;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 5px 50px;
+    text-decoration-color: grey;
+    text-align: right;
+}

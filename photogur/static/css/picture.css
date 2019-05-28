@@ -18,12 +18,25 @@
     font-size: 1.5em;
     padding: 2px 50px 20px;
 }
+.form-title, .form-input {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1em;
+    display: block;
+    margin-left: 50px;
+    padding: 5px;
+}
+.submit {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1em;
+    display: block;
+    margin: 10px 0 10px 50px;
+}
 ul {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 10px 50px;
     line-height: 1.5em;
 }
-span {
+.comment-title {
     text-decoration: underline;
 }
 .back {

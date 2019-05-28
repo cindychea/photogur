@@ -7,15 +7,14 @@
     <title>{{ title }}</title>
     {% load staticfiles %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header>
-        <!-- <a href="{% url 'pictures' %}"><h1 class="photogur">Photogur</h1></a> -->
-        <h1 class="photogur">Photogur</h1>
-        <form action="{% url 'picture_search' %}" method="get">
+        <h1 class="photogur"><a href="{% url 'pictures' %}">Photogur</a></h1>
+        <form class="search" action="{% url 'picture_search' %}" method="get">
             <label for="picture-search">
-                <span>Search:</span>
+                <span>Find a Picture</span>
                 <input type="search" id="picture-search" name="query" value={{ query }}>
             </label>
             <input type="submit" value="Search">
