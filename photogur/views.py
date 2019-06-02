@@ -2,6 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.decorators.http import require_http_methods
+from django.contrib.auth import authenticate, login
 from photogur.models import Picture, Comment
 from photogur.forms import LoginForm
 
@@ -48,5 +49,18 @@ def create_comment(request):
     return redirect('picture_show', id=picture_id)
 
 def login_view(request):
-    form = LoginForm()
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            pw = form.cleaned_data['password']
+            user = authenticate(username=username, password=pw)
+            if user is not None:
+                login(request, user)
+                return HttpResponseRedirect('/pictures')
+                # why do I have to put /pictures here and not in the def root?
+            else: 
+                form.add_error('username', 'Login failed')
+    else:
+        form = LoginForm()  
     return render(request, 'login.html', {'form': form})
