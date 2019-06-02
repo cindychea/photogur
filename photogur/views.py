@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.decorators.http import require_http_methods
 from photogur.models import Picture, Comment
+from photogur.forms import LoginForm
+
 
 def root(request):
     return HttpResponseRedirect('pictures')
@@ -44,3 +46,7 @@ def create_comment(request):
     # comment.save()
     Comment.objects.create(name=user_name, picture=picture, message=user_message)
     return redirect('picture_show', id=picture_id)
+
+def login_view(request):
+    form = LoginForm()
+    return render(request, 'login.html', {'form': form})
