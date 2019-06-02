@@ -26,6 +26,16 @@ nav a {
     background-color: lightgrey;
     border-radius: 5px;
 }
+.add {
+    position: absolute;
+    left: 120px;
+    top: 10px;
+    padding: 5px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(13, 129, 168);
+    background-color: lightgrey;
+    border-radius: 5px;
+}
 body {
     padding-bottom: 30px;
 }
@@ -77,6 +87,10 @@ body {
 .loginform {
     margin-top: 20px;
     font-family: Arial, Helvetica, sans-serif;
+}
+.addform {
+    margin-top: 30px;
+    font-family: Arial, Helvetica, sans-serif;    
 }
 footer {
     background-color: rgb(44, 43, 43);

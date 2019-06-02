@@ -5,6 +5,7 @@
     <img class="hero-picture" src="{{ picture.url }}" alt="{{ picture.title }}" />
     <h2 class="picture_title">{{ picture.title }}</h2>
     <h3 class="picture_artist">By {{ picture.artist }}</h3>
+    <h4 class="picture_user">Added by {{ picture.user }}</h4>
     
     <form action="{% url 'create_comment' %}" method="post">
         {% csrf_token %}

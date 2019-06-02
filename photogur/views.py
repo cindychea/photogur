@@ -5,7 +5,7 @@ from django.views.decorators.http import require_http_methods
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from photogur.models import Picture, Comment
-from photogur.forms import LoginForm
+from photogur.forms import LoginForm, PictureForm
 
 
 def root(request):
@@ -83,3 +83,15 @@ def signup(request):
     else:
         form = UserCreationForm()
         return render(request, 'signup.html', {'form': form})
+
+def add_picture(request):
+    if request.method == 'POST':
+        picture_form = PictureForm(request.POST)
+        if picture_form.is_valid():
+            new_pic = picture_form.save(commit=False)
+            new_pic.user = request.user
+            picture_form.save()
+            return redirect('/pictures', id=new_pic.id)
+    else:
+        picture_form = PictureForm()
+        return render(request, 'add_picture.html', {'picture_form': picture_form})
