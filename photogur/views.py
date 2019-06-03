@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from photogur.models import Picture, Comment
 from photogur.forms import LoginForm, PictureForm
 
@@ -38,6 +39,7 @@ def picture_search(request):
     response = render(request, 'picture_search.html', context)
     return HttpResponse(response)
 
+# combining decorators? e.g. login required
 @require_http_methods(['POST'])
 def create_comment(request):
     user_name = request.POST['name']
@@ -84,6 +86,7 @@ def signup(request):
         form = UserCreationForm()
         return render(request, 'signup.html', {'form': form})
 
+@login_required
 def add_picture(request):
     if request.method == 'POST':
         picture_form = PictureForm(request.POST)
