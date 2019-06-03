@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<h2>Edit Picture</h2>
 <form class="addform" action="{% url 'add_picture' %}" method="post">
     {% csrf_token%}
     {{ picture_form.as_p }}

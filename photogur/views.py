@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth import authenticate, login, logout
@@ -52,6 +52,8 @@ def create_comment(request):
     return redirect('picture_show', id=picture_id)
 
 def login_view(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/pictures')
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -73,6 +75,8 @@ def logout_view(request):
     return HttpResponseRedirect('/pictures')
 
 def signup(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/pictures')
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -98,3 +102,20 @@ def add_picture(request):
     else:
         picture_form = PictureForm()
         return render(request, 'add_picture.html', {'picture_form': picture_form})
+
+@login_required
+def edit_picture(request, id):
+    picture = get_object_or_404(Picture, id=id, user=request.user.pk)
+    picture_form = PictureForm(instance=picture)
+    if request.method == 'POST':
+        picture_form = PictureForm(request.POST)
+        if picture_form.is_valid():
+            pic = picture_form.save(commit=False)
+            pic.user = request.user
+            picture_form.save()
+            return redirect('/pictures', id=picture.id)
+    else:
+        picture_form = PictureForm(instance=Picture)
+        return render(request, 'edit_picture.html', {'picture_form': picture_form, 'picture': picture})
+
+        # seems to be adding new instead of updating... objects showing up on update form

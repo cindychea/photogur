@@ -2,6 +2,9 @@
 {% block content %}
 {% load staticfiles %}
 <link rel="stylesheet" href="{% static 'css/picture.css' %}">
+    {% if request.user == picture.user %}    
+        <a class='editlink' href="{% url 'edit_picture' id=picture.id %}">Edit Picture</a>
+    {% endif %}
     <img class="hero-picture" src="{{ picture.url }}" alt="{{ picture.title }}" />
     <h2 class="picture_title">{{ picture.title }}</h2>
     <h3 class="picture_artist">By {{ picture.artist }}</h3>

@@ -27,5 +27,6 @@ urlpatterns = [
     path('login/', login_view, name="login"),
     path('logout/', logout_view, name="logout"),
     path('signup/', signup, name='signup'),
-    path('add/', add_picture, name='add_picture')
+    path('add/', add_picture, name='add_picture'),
+    path('edit/<int:id>', edit_picture, name='edit_picture')
 ]
