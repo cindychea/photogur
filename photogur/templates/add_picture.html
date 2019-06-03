@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<h2>Edit Picture</h2>
-<form class="addform" action="{% url 'add_picture' %}" method="post">
-    {% csrf_token%}
-    {{ picture_form.as_p }}
-    <button type="submit">Submit</button>
-</form>
-
+<div class="addform">
+    <h2>Add a Picture</h2>
+    <form action="{% url 'add_picture' %}" method="post">
+        {% csrf_token%}
+        {{ picture_form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</div>
 {% endblock %}

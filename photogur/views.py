@@ -106,16 +106,12 @@ def add_picture(request):
 @login_required
 def edit_picture(request, id):
     picture = get_object_or_404(Picture, id=id, user=request.user.pk)
-    picture_form = PictureForm(instance=picture)
+    print(picture.user)
     if request.method == 'POST':
-        picture_form = PictureForm(request.POST)
+        picture_form = PictureForm(request.POST, instance=picture)
         if picture_form.is_valid():
-            pic = picture_form.save(commit=False)
-            pic.user = request.user
             picture_form.save()
             return redirect('/pictures', id=picture.id)
     else:
-        picture_form = PictureForm(instance=Picture)
+        picture_form = PictureForm(instance=picture)
         return render(request, 'edit_picture.html', {'picture_form': picture_form, 'picture': picture})
-
-        # seems to be adding new instead of updating... objects showing up on update form

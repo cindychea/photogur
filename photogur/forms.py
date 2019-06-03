@@ -8,6 +8,7 @@ class LoginForm(forms.Form):
     password = CharField(widget=PasswordInput())
 
 class PictureForm(ModelForm):
+    
     class Meta:
         model = Picture 
         fields = ['title', 'artist', 'url']
